@@ -1,0 +1,19 @@
+modules:
+  jira:adminPage:
+    - key: forge-sql-1-hello-world-admin-page
+      resource: main
+      resolver:
+        function: resolver
+      title: forge-sql-1
+  function:
+    - key: resolver
+      handler: index.handler
+resources:
+  - key: main
+    path: static/hello-world/build
+app:
+  runtime:
+    name: nodejs24.x
+    memoryMB: 256
+    architecture: arm64
+  id: ari:cloud:ecosystem::app/3570b324-96ba-4866-af32-7b7ffcad5257
