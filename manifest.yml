@@ -1,16 +1,33 @@
 modules:
   jira:adminPage:
-    - key: forge-sql-1-hello-world-admin-page
+    - key: forge-sql-crud-admin-page
       resource: main
       resolver:
         function: resolver
-      title: forge-sql-1
+      title: User Management
+
+  scheduledTrigger:
+    - key: db-migration
+      function: migration
+      interval: hour
+
   function:
     - key: resolver
       handler: index.handler
+    - key: migration
+      handler: index.runMigration
+
+  sql:
+    - key: main
+      engine: mysql
+
 resources:
   - key: main
     path: static/hello-world/build
+
+permissions:
+  scopes:
+    - storage:app
 app:
   runtime:
     name: nodejs24.x
